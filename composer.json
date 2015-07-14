@@ -1,5 +1,5 @@
 {
-    "name": "favoriteeats/Laravel-Calq-HTTP",
+    "name": "favoriteeats/laravel-calq-http",
     "description": "A Laravel wrapper for the Calq HTTP API",
     "keywords": [
         "Calq",
