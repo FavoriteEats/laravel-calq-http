@@ -1,43 +1,43 @@
 {
-    "name": "favoriteeats/laravel-calq-http",
-    "description": "A Laravel wrapper for the Calq HTTP API",
-    "keywords": [
-        "Calq",
-        "Laravel-Calc-HTTP"
-    ],
-    "homepage": "https://github.com/favoriteeats/Laravel-Calq-HTTP",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Spencer Lewis",
-            "email": "admin+github@favoriteeats.com"
-        }
-    ],
-    "require": {
-        "illuminate/support": "~5.1",
-        "php": ">=5.5.9",
-        "guzzlehttp/guzzle": "3.8.*"
-    },
-    "require-dev": {
-        "phpunit/phpunit" : "4.*",
-        "scrutinizer/ocular": "~1.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "FavoriteEats\\CalqHTTP\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "FavoriteEats\\CalqHTTP\\Test\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "phpunit"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
+  "name": "favoriteeats/laravel-calq-http",
+  "description": "A Laravel wrapper for the Calq HTTP API",
+  "keywords": [
+    "Calq.io",
+    "Laravel-Calc-HTTP"
+  ],
+  "homepage": "https://github.com/favoriteeats/Laravel-Calq-HTTP",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Spencer Lewis",
+      "email": "admin+github@favoriteeats.com"
     }
+  ],
+  "require": {
+    "illuminate/support": "~5.1",
+    "php": ">=5.5.9",
+    "guzzlehttp/guzzle": "^6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit" : "4.*",
+    "scrutinizer/ocular": "~1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "FavoriteEats\\CalqHTTP\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FavoriteEats\\CalqHTTP\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
 }
