@@ -55,7 +55,7 @@ class CalqHTTPServiceProvider extends ServiceProvider
 
     private function registerPackage()
     {
-        $this->app->singleton('CalqHTTP', function($app) {
+        $this->app->singleton('FavoriteEats\CalqHTTP\CalqHTTP', function($app) {
 
             $calqHTTPApi = new GuzzleCalqHTTPAPI();
 
