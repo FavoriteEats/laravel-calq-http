@@ -48,7 +48,7 @@ abstract class CalqHTTPAPI implements CalqHTTPAPIInterface {
         $payload = [
             'actor'       => $actor,
             'action_name' => $action,
-            'properties'  => $properties,
+            'properties'  => (count($properties) > 0 ? $properties : (object) null),
             'write_key'   => $writeKey
         ];
 

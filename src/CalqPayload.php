@@ -134,10 +134,10 @@ abstract class CalqPayload {
     }
 
     /**
-     * @param $properties
+     * @param array $properties
      * @throws InvalidCalqSpecialPropertyException
      */
-    protected function validateProperties($properties)
+    protected function validateProperties(array $properties)
     {
         foreach($properties as $property) {
 
