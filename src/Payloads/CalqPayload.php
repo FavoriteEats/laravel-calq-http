@@ -1,6 +1,5 @@
 <?php
-
-namespace FavoriteEats\CalqHTTP;
+namespace FavoriteEats\CalqHTTP\Payloads;
 
 /**
  * Class CalqPayload
@@ -32,7 +31,12 @@ abstract class CalqPayload {
     /**
      * @var array List of payload parameters in order of requirement.
      */
-    protected static $payloadParams = [];
+    protected static $params = [];
+
+    /**
+     * @var array List of payload parameters required by the API
+     */
+    protected static $requiredParams = [];
 
 
     public function __construct(array $payloadData = []) {
@@ -41,6 +45,69 @@ abstract class CalqPayload {
         }
     }
 
+    /**
+     * @return string
+     */
+    public function getActor()
+    {
+        return $this->actor;
+    }
+
+    /**
+     * @param string $actor
+     */
+    public function setActor($actor)
+    {
+        $this->actor = $actor;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @param array $properties
+     */
+    public function setProperties(array $properties)
+    {
+        $this->validateProperties($properties);
+
+        $this->properties = $properties;
+    }
+
+    /**
+     * Converts payload parameters into array
+     * @return array
+     */
+    public function toArray()
+    {
+        $paramArray = [];
+
+        foreach(static::$params as $param) {
+            $paramArray[$param] = $this->getParamValue($param);
+        }
+
+        return $paramArray;
+    }
+
+    /**
+     * Determine whether the all required payload parameters have been set
+     * @return bool
+     */
+    public function valid()
+    {
+        foreach(static::$requiredParams as $param) {
+          if(empty($this->getParamValue($param))) {
+              return false;
+          }
+        }
+
+        return true;
+    }
 
     /**
      * Takes numerically indexed or associative array of payload parameters and sets values on payload object via setters.
@@ -89,6 +156,21 @@ abstract class CalqPayload {
     }
 
     /**
+     * @param $param
+     * @return null
+     */
+    protected function getParamValue($param)
+    {
+        $method = 'get' . Str::studly($param);
+
+        if (method_exists($this, $method)) {
+            return $this->{$method};
+        }
+
+        return null;
+    }
+
+    /**
      * @param array $array
      * @return bool
      */
@@ -97,40 +179,6 @@ abstract class CalqPayload {
         $keys = array_keys($array);
 
         return array_keys($keys) !== $keys;
-    }
-
-    /**
-     * @return string
-     */
-    public function getActor()
-    {
-        return $this->actor;
-    }
-
-    /**
-     * @param string $actor
-     */
-    public function setActor($actor)
-    {
-        $this->actor = $actor;
-    }
-
-    /**
-     * @return array
-     */
-    public function getProperties()
-    {
-        return $this->properties;
-    }
-
-    /**
-     * @param array $properties
-     */
-    public function setProperties(array $properties)
-    {
-        $this->validateProperties($properties);
-
-        $this->properties = $properties;
     }
 
     /**
@@ -165,17 +213,6 @@ abstract class CalqPayload {
     protected function isSpecialProperty($property)
     {
         return array_key_exists($property, $this->specialProperties);
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        return [
-            'actor' => $this->getActor(),
-            'properties' => $this->getProperties(),
-        ];
     }
 
 }

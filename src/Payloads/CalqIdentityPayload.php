@@ -1,5 +1,5 @@
 <?php
-namespace FavoriteEats\CalqHTTP;
+namespace FavoriteEats\CalqHTTP\Payloads;
 
 /**
  * Class CalqIdentityPayload
@@ -22,9 +22,17 @@ class CalqIdentityPayload extends CalqPayload {
     /**
      * @var array List of payload parameters in order of requirement.
      */
-    protected static $payloadParams = [
+    protected static $params = [
         0 => 'old_actor',
         1 => 'new_actor'
+    ];
+
+    /**
+     * @var array List of payload parameters required by the API
+     */
+    protected static $requiredParams = [
+        'old_actor',
+        'new_actor'
     ];
 
 

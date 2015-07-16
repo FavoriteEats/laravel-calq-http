@@ -1,5 +1,5 @@
 <?php
-namespace FavoriteEats\CalqHTTP;
+namespace FavoriteEats\CalqHTTP\Payloads;
 
 /**
  * Class CalqProfilePayload
@@ -33,9 +33,17 @@ class CalqProfilePayload extends CalqPayload {
     /**
      * @var array List of payload parameters in order of requirement.
      */
-    protected static $payloadParams = [
+    protected static $params = [
         0 => 'actor',
         1 => 'properties'
+    ];
+
+    /**
+     * @var array List of payload parameters required by the API
+     */
+    protected static $requiredParams = [
+        'actor',
+        'properties'
     ];
 
 }

@@ -1,6 +1,8 @@
 <?php
 namespace FavoriteEats\CalqHTTP;
 
+use FavoriteEats\CalqHTTP\API\CalqHTTPAPIInterface;
+
 class CalqHTTP implements CalqHTTPInterface
 {
 

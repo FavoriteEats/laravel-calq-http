@@ -1,5 +1,5 @@
 <?php
-namespace FavoriteEats\CalqHTTP;
+namespace FavoriteEats\CalqHTTP\API;
 
 use GuzzleHttp\Client as Guzzle;
 

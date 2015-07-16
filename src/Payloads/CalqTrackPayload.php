@@ -1,5 +1,5 @@
 <?php
-namespace FavoriteEats\CalqHTTP;
+namespace FavoriteEats\CalqHTTP\Payloads;
 
 use Favoriteeats\CalqHTTP\Exceptions\InvalidCalqActionNamePropertyException;
 use FavoriteEats\CalqHTTP\Exceptions\InvalidIPAddressException;
@@ -47,10 +47,21 @@ class CalqTrackPayload extends CalqPayload {
     /**
      * @var array List of payload parameters in order of requirement.
      */
-    protected static $payloadParams = [
+    protected static $params = [
         0 => 'actor',
         1 => 'action_name',
-        2 => 'properties'
+        2 => 'properties',
+        3 => 'ip_address',
+        4 => 'timestamp'
+    ];
+
+    /**
+     * @var array List of payload parameters required by the API
+     */
+    protected static $requiredParams = [
+        'actor',
+        'action_name',
+        'properties'
     ];
 
     /**
@@ -121,20 +132,6 @@ class CalqTrackPayload extends CalqPayload {
     public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
-    }
-
-    public function toArray()
-    {
-        $baseProperties = parent::toArray();
-
-        return array_merge(
-            $baseProperties,
-            [
-                'action_name' => $this->getActionName(),
-                'ip_address' => $this->getIpAddress(),
-                'timestamp' => $this->getTimestamp()
-            ]
-        );
     }
 
 }

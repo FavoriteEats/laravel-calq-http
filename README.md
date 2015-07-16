@@ -29,7 +29,7 @@ See [Calq HTTP API documentation](https://calq.io/docs/client/http) for full inf
 //First, specify the HTTP client you want to use. The service provider defaults to Guzzle,
 // and Guzzle is the only client currently supported.
 
-$calqHTTPApi = new GuzzleCalqHTTPAPI();
+$calqHTTPApi = new FavoriteEats\CalqHTTP\API\GuzzleCalqHTTPAPI();
 
 //Then, instantiate the main Calq class.
 $calq = new CalqHTTP($calqHTTPApi, '[Calq write key]');
@@ -60,7 +60,7 @@ class SomeController extends Controller {
 // and CalqIdentityPayload (/transfer endpoint). An array of CalqTrackPayloads
 // is used in /batch endpoint operations.
 
-$payload = new FavoriteEats\CalqHTTP\CalqTrackPayload([
+$payload = new FavoriteEats\CalqHTTP\Payloads\CalqTrackPayload([
     12345,                                             //actor (required); unique identifier for the user 
     'some_action_name',                                //action_name (required); name of the action you're tracking
     [                                                  //properties (required), [] allowed; custom or special properties
@@ -74,10 +74,10 @@ $payload = new FavoriteEats\CalqHTTP\CalqTrackPayload([
 
 $response = $calq->track($payload);
 
-echo $response->getBody(); //response is a GuzzleHttp\Psr7\Response object
+echo $response->getBody(); //response is a GuzzleHttp\Message\Response object
 
 //Payload attributes may also be set individually.
-$payload = new FavoriteEAts\CalqHTTP\CalqTrackPayload();
+$payload = new FavoriteEats\CalqHTTP\Payloads\CalqTrackPayload();
 $payload->setActor(12345);
 $payload->setActionName('some_action_name');
 $payload->setProperties(['test'=>true]);
@@ -90,7 +90,7 @@ $payload->setProperties(['test'=>true]);
 //Send multiple payloads together as follows...
 
 foreach($userAction as $action) {
-    $payload = new FavoriteEats\CalqHTTP\CalqTrackPayload([
+    $payload = new FavoriteEats\CalqHTTP\Payloads\CalqTrackPayload([
         'actor' => $action->user->id, 
         'action_name' => $action->name,
         'properties' => [
@@ -108,7 +108,7 @@ $response = $calq->track() //sends all batched CalqTrackPayload payloads
 ### Using the /profile endpoint
 
 ```php
-$payload = new FavoriteEats\CalqHTTP\CalqProfilePayload([
+$payload = new FavoriteEats\CalqHTTP\Payloads\CalqProfilePayload([
     12345,
     [
         'height' => '5ft 11in',
@@ -125,9 +125,13 @@ $response = $calq->profile($payload);
 ### Using the /transfer endpoint
 
 ```php
-$payload = new FavoriteEats\CalqHTTP\CalqIdentityPayload([12346, 12345]);
+$payload = new FavoriteEats\CalqHTTP\Payloads\CalqIdentityPayload([12346, 12345]);
 $response = $calq->transfer($payload);
 ```
+
+## Advanced
+
+You can also verify that a payload has all required fields set before sending it to the API using the `$payload->verify()` method.
 
 
 ## Contributing

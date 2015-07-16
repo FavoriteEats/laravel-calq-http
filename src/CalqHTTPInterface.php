@@ -1,6 +1,10 @@
 <?php
 namespace FavoriteEats\CalqHTTP;
 
+use FavoriteEats\CalqHTTP\Payloads\CalqTrackPayload;
+use FavoriteEats\CalqHTTP\Payloads\CalqProfilePayload;
+use FavoriteEats\CalqHTTP\Payloads\CalqIdentityPayload;
+
 interface CalqHTTPInterface
 {
 
