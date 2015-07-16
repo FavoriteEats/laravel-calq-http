@@ -49,8 +49,7 @@ class GuzzleCalqHTTPAPI extends CalqHTTPAPI {
                 ]
             );
         } catch(\Exception $e) {
-            \Log::debug('GuzzleCalqHTTPAPI Error: ['.$e->getCode().'] '.$e->getMessage());
-            //dd('GuzzleCalqHTTPAPI Error: ['.$e->getCode().'] '.$e->getMessage());
+            \Log::error('GuzzleCalqHTTPAPI Error: [' . $e->getCode() . '] ' . $e->getMessage());
         }
 
         return $response;

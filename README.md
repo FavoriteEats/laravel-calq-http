@@ -34,8 +34,11 @@ $calqHTTPApi = new GuzzleCalqHTTPAPI();
 //Then, instantiate the main Calq class.
 $calq = new CalqHTTP($calqHTTPApi, '[Calq write key]');
 
-//If the CalqHTTP instance is resolved through the IOC then the Guzzle client and write key are
+//If the CalqHTTP instance is resolved through the IoC container then the Guzzle client and write key are
 // automatically composed with the object as a singleton for you
+
+use FavoriteEats\CalqHTTP\CalqHTTP;
+
 class SomeController extends Controller {
 
     protected $calq;
