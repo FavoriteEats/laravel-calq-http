@@ -15,7 +15,7 @@ Laravel-Calq-HTTP is an API wrapper for the [Calq.io HTTP API](https://calq.io/d
 
 To install Laravel Calq HTTP:
 
-- `composer require favoriteeats/laravel-calq-http` or add `'favoriteeats/laravel-calq-http': 'dev-master'` to the require section of your composer.json file
+- `composer require favoriteeats/laravel-calq-http` or add `"favoriteeats/laravel-calq-http": "dev-master"` to the require section of your composer.json file
 - Add `FavoriteEats\CalqHTTP\CalqHTTPServiceProvider::class` to your config/app.php "providers" array
 - Then, run `composer install` or `composer update`
 - Optionally, export the config file with `php artisan vendor:publish --provider=FavoriteEats\Laravel-Calq-HTTP\CalqHTTPServiceProvider` and edit config/calqhttp.php, or (better) add the expected config values to your .env file
