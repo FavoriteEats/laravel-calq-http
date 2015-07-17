@@ -129,7 +129,7 @@ $payload = new FavoriteEats\CalqHTTP\Payloads\CalqIdentityPayload([12346, 12345]
 $response = $calq->transfer($payload);
 ```
 
-## Advanced
+### Advanced
 
 You can also verify that a payload has all required fields set before sending it to the API using the `$payload->verify()` method.
 

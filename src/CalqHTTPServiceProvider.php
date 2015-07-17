@@ -57,7 +57,7 @@ class CalqHTTPServiceProvider extends ServiceProvider
     {
         $this->app->singleton('FavoriteEats\CalqHTTP\CalqHTTP', function($app) {
 
-            $calqHTTPApi = new GuzzleCalqHTTPAPI();
+            $calqHTTPApi = new FavoriteEats\CalqHTTP\API\GuzzleCalqHTTPAPI();
 
             return new CalqHTTP($calqHTTPApi, config('calqhttp.write_key'));
         });
