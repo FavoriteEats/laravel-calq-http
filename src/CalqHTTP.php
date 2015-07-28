@@ -2,6 +2,9 @@
 namespace FavoriteEats\CalqHTTP;
 
 use FavoriteEats\CalqHTTP\API\CalqHTTPAPIInterface;
+use FavoriteEats\CalqHTTP\Payloads\CalqTrackPayload;
+use FavoriteEats\CalqHTTP\Payloads\CalqProfilePayload;
+use FavoriteEats\CalqHTTP\Payloads\CalqIdentityPayload;
 
 class CalqHTTP implements CalqHTTPInterface
 {

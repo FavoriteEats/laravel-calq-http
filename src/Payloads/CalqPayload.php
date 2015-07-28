@@ -130,8 +130,8 @@ abstract class CalqPayload {
     {
         if(is_int($key)) {
             $param = '';
-            if(isset(static::$payloadParams[$key])) {
-                $param = static::$payloadParams[$key];
+            if(isset(static::$params[$key])) {
+                $param = static::$params[$key];
             }
         } else {
             $param = $key;
